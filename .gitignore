@@ -1,0 +1,13 @@
+.idea
+.DS_Store
+venv
+__pycache__/
+blog/__pycache__/
+blog/migrations/
+comment/__pycache__/
+comment/migrations/
+notice/__pycache__/
+notice/migrations/
+setting/__pycache__/
+setting/migrations/
+media/cache
