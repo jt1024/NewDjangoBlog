@@ -125,7 +125,7 @@ class BaseSetting(object):
 
 # 修改xadmin的全局配置
 class GlobalSetting(object):
-    site_title = '向东的笔记本'
+    site_title = 'IT老王'
     site_footer = '2019'
 
     # Models收起功能
