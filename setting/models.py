@@ -4,8 +4,8 @@ from django.db import models
 
 # 友情链接
 class FriendLinks(models.Model):
-    name = models.CharField('网站名称', max_length=50, default='IT老王')
-    link = models.CharField('网站地址', max_length=200, default='https://www.eastnotes.com')
+    name = models.CharField('网站名称', max_length=50, default='牛氏圆柔筋骨堂')
+    link = models.CharField('网站地址', max_length=200, default='https://www.0532zhenggu.com')
 
     class Meta:
         verbose_name = "友情链接"
@@ -53,7 +53,7 @@ class Social(models.Model):
     zhi_hu = models.URLField("知乎地址", max_length=200, default='https://www.zhihu.com/people/sylax8/')
     qq = models.CharField("QQ号码", max_length=20, default='783342105')
     wechat = models.CharField("微信", max_length=50, default='reborn0502')
-    official_wechat = models.CharField("微信公众号", max_length=50, default='IT老王')
+    official_wechat = models.CharField("微信公众号", max_length=50, default='牛氏圆柔筋骨堂')
 
     class Meta:
         verbose_name = "社交账号"
