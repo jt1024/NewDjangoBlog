@@ -11,3 +11,4 @@ notice/migrations/
 setting/__pycache__/
 setting/migrations/
 media/cache
+whoosh_index

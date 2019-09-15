@@ -1,5 +1,5 @@
-from django.db import models
 import django.utils.timezone as timezone
+from django.db import models
 
 
 # 友情链接
@@ -52,7 +52,7 @@ class Social(models.Model):
     wei_bo = models.URLField("微博地址", max_length=200, default='https://weibo.com/')
     zhi_hu = models.URLField("知乎地址", max_length=200, default='https://www.zhihu.com/people/sylax8/')
     qq = models.CharField("QQ号码", max_length=20, default='783342105')
-    wechat = models.CharField("微信",max_length=50,default='reborn0502')
+    wechat = models.CharField("微信", max_length=50, default='reborn0502')
     official_wechat = models.CharField("微信公众号", max_length=50, default='IT老王')
 
     class Meta:

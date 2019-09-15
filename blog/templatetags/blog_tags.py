@@ -75,14 +75,14 @@ def get_movies_tags():
 @register.simple_tag
 def get_comment_count(obj):
     content_type = ContentType.objects.get_for_model(obj)
-    return Comment.objects.filter(content_type=content_type,object_id=obj.id).count()
+    return Comment.objects.filter(content_type=content_type, object_id=obj.id).count()
 
 
 # 返回评论表单
 @register.simple_tag
 def get_comment_form(obj):
     content_type = ContentType.objects.get_for_model(obj)
-    form = CommentForm(initial={'content_type':content_type.model,'object_id':obj.pk,'reply_comment_id':'0'})
+    form = CommentForm(initial={'content_type': content_type.model, 'object_id': obj.pk, 'reply_comment_id': '0'})
     return form
 
 

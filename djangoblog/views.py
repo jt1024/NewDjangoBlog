@@ -1,7 +1,7 @@
-from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render, redirect, reverse
 from django.contrib import auth
 from django.contrib.auth.models import User
-from djangoblog.form import LoginForm,RegForm
+from djangoblog.form import LoginForm, RegForm
 
 
 # 显示登录页面、进行登录操作
@@ -12,7 +12,7 @@ def login(request):
         if login_form.is_valid():
             user = login_form.cleaned_data['user']
             auth.login(request, user)
-            return redirect(request.GET.get('from',reverse('blog:index'))) # 重定向到上一个页面
+            return redirect(request.GET.get('from', reverse('blog:index')))  # 重定向到上一个页面
     else:
         login_form = LoginForm()
     context = {}
@@ -37,11 +37,11 @@ def register(request):
             user.save()
 
             # 注册后自动登录
-            user = auth.authenticate(username=username,password=password)
-            auth.login(request,user)
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
 
             # 跳转到进入注册页面之前的页面
-            return redirect(request.GET.get('from',reverse('blog:index')))  # 重定向到上一个页面
+            return redirect(request.GET.get('from', reverse('blog:index')))  # 重定向到上一个页面
 
     else:
         reg_form = RegForm()

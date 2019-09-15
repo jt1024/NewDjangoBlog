@@ -1,8 +1,8 @@
-from django.shortcuts import render,reverse,redirect
-from .models import Comment
+from django.shortcuts import reverse, redirect
+
 from comment.form import CommentForm
-from notifications.signals import notify
-from django.utils.html import strip_tags
+from .models import Comment
+
 
 # 添加评论
 def update_comment(request):
@@ -41,4 +41,4 @@ def update_comment(request):
         #
         # notify.send(comment.user, recipient=recipient, verb=verb, action_object=comment)
 
-    return redirect(referer+'#comment')
+    return redirect(referer + '#comment')

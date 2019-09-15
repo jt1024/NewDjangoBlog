@@ -59,8 +59,6 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 ]
 
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -86,7 +84,7 @@ CKEDITOR_CONFIGS = {
             ["TextColor", "BGColor", 'RemoveFormat'],
             ['NumberedList', 'BulletedList'],
             ['Link', 'Unlink'],
-            ["Smiley", "SpecialChar", 'Blockquote','CodeSnippet'],
+            ["Smiley", "SpecialChar", 'Blockquote', 'CodeSnippet'],
         ],
         'width': 'auto',
         'height': '180',
@@ -138,11 +136,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
 # 静态文件路径
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # 媒体资源路径
 MEDIA_URL = '/media/'

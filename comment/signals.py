@@ -4,6 +4,7 @@ from django.utils.html import strip_tags
 from .models import Comment
 from django.dispatch import receiver
 
+
 # @receiver(post_save,sender=Comment)
 # def send_notification(sender,instance,**kwargs):
 #     # 发送站内通知
@@ -26,8 +27,8 @@ from django.dispatch import receiver
 #     notify.send(instance.user, recipient=recipient, verb=verb, action_object=instance,url=url)
 
 
-@receiver(post_save,sender=Comment)
-def send_notification(sender,instance,**kwargs):
+@receiver(post_save, sender=Comment)
+def send_notification(sender, instance, **kwargs):
     # 发送站内通知
     # 判断评论的是博客还是
     if instance.reply_to is None:
@@ -44,6 +45,6 @@ def send_notification(sender,instance,**kwargs):
         # 接受者是作者
         recipient = instance.reply_to
         verb = '{0} 评论了你的评论：{1}'.format(instance.user, strip_tags(instance.parent.text))
-    url = instance.content_object.get_absolute_url() + '#comment_'+str(instance.pk)
+    url = instance.content_object.get_absolute_url() + '#comment_' + str(instance.pk)
 
-    notify.send(instance.user, recipient=recipient, verb=verb, action_object=instance,url=url)
+    notify.send(instance.user, recipient=recipient, verb=verb, action_object=instance, url=url)

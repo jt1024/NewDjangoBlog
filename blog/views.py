@@ -1,12 +1,9 @@
 import markdown
-from .models import *
-from django.views.generic import ListView
-from django.contrib.auth.models import User
-from django.utils.html import strip_tags
 from django.shortcuts import render, get_object_or_404
-from djangoblog import settings
-from djangoblog.settings import base
+from django.views.generic import ListView
 
+from djangoblog.settings import base
+from .models import *
 
 
 class IndexView(ListView):
@@ -19,7 +16,7 @@ class IndexView(ListView):
 
 
 def article(request, pk):
-    post = get_object_or_404(Post, pk=pk,)
+    post = get_object_or_404(Post, pk=pk, )
     author = User.objects.get(id=post.author_id)
     category = Category.objects.get(id=post.category_id)
     post.increase_views()  # 阅读量加1
@@ -34,7 +31,7 @@ def article(request, pk):
     if strip_tags(md.toc).strip() == '':
         post.toc = ''
     else:
-       post.toc = md.toc
+        post.toc = md.toc
 
     # 获取相关文章
     relative_posts = Post.objects.filter(category_id=post.category_id, status='p').exclude(pk=pk).order_by('?')[:4]
@@ -45,6 +42,7 @@ def article(request, pk):
     context['category'] = category
     context['relative_posts'] = relative_posts
     return render(request, 'blog/article.html', context)
+
 
 class ArchivesView(ListView):
     template_name = 'blog/archives.html'
@@ -117,12 +115,12 @@ class BookListView(ListView):
     paginate_by = base.BOOK_PAGINATE_BY
 
     def get_queryset(self):
-        tag = get_object_or_404(BookTag,pk = self.kwargs.get('pk'))
+        tag = get_object_or_404(BookTag, pk=self.kwargs.get('pk'))
         return Book.objects.filter(tag=tag).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         context = super(BookListView, self).get_context_data(**kwargs)
-        context['tag_name'] = BookTag.objects.get(pk = self.kwargs.get('pk'))
+        context['tag_name'] = BookTag.objects.get(pk=self.kwargs.get('pk'))
         return context
 
 
@@ -141,12 +139,12 @@ class MovieListView(ListView):
     paginate_by = base.BOOK_PAGINATE_BY
 
     def get_queryset(self):
-        tag = get_object_or_404(MovieTag,pk = self.kwargs.get('pk'))
+        tag = get_object_or_404(MovieTag, pk=self.kwargs.get('pk'))
         return Movie.objects.filter(tag=tag).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         context = super(MovieListView, self).get_context_data(**kwargs)
-        context['tag_name'] = MovieTag.objects.get(pk = self.kwargs.get('pk'))
+        context['tag_name'] = MovieTag.objects.get(pk=self.kwargs.get('pk'))
         return context
 
 

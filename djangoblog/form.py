@@ -6,9 +6,9 @@ from django.contrib.auth.models import User
 # 登录表单
 class LoginForm(forms.Form):
     username = forms.CharField(label='fa fa-user',
-                               widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'请输入用户名'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '请输入用户名'}))
     password = forms.CharField(label='fa fa-lock',
-                               widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'请输入密码'}))
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '请输入密码'}))
 
     # 验证用户名密码是否正确
     def clean(self):
@@ -26,10 +26,10 @@ class LoginForm(forms.Form):
 
 # 注册表单
 class RegForm(forms.Form):
-    username = forms.CharField(label='fa fa-user',max_length=30,min_length=3,widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '请输入3-30位的用户名'}))
-    email = forms.EmailField(label='fa fa-envelope',widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': '请输入邮箱'}))
-    password = forms.CharField(label='fa fa-lock',min_length=6,widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '请输入不少于6位的密码'}))
-    password_again = forms.CharField(label='fa fa-lock',min_length=6,widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '请输入再次密码'}))
+    username = forms.CharField(label='fa fa-user', max_length=30, min_length=3, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '请输入3-30位的用户名'}))
+    email = forms.EmailField(label='fa fa-envelope', widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': '请输入邮箱'}))
+    password = forms.CharField(label='fa fa-lock', min_length=6, widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '请输入不少于6位的密码'}))
+    password_again = forms.CharField(label='fa fa-lock', min_length=6, widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '请输入再次密码'}))
 
     # 验证部分
     def clean_username(self):
@@ -50,4 +50,3 @@ class RegForm(forms.Form):
         if password != password_again:
             raise forms.ValidationError('密码输入不一致')
         return password
-
