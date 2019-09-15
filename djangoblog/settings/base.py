@@ -1,8 +1,6 @@
 import os
-import sys
 
 BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..")
-# sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = 'v8_ce#n3lleuhl(t4p^x)bd18_aarlmd$e!f*^4edjlm@*=9&)'
 ROOT_URLCONF = 'djangoblog.urls'
 WSGI_APPLICATION = 'djangoblog.wsgi.application'
